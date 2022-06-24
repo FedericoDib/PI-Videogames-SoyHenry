@@ -1,0 +1,13 @@
+.div_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: aliceblue;
+}
+
+.div_videogames__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 0.6%;
+    padding: 1%;
+}
