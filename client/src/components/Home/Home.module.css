@@ -1,3 +1,9 @@
+.div_home{
+    color: #fff;
+    font-size: 0.6rem;
+    font-family: 'Press Start 2P', cursive;
+}
+
 .div_container {
     display: flex;
     align-items: center;
@@ -6,8 +12,33 @@
 }
 
 .div_videogames__container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 0.6%;
-    padding: 1%;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 5px;
 }
+
+.reload_button {
+    background-color: #fcfdfd;
+    border: 2px solid rgba(132,53,142,1);
+    border-radius: 30px;
+    box-shadow: rgba(132,53,142,1) 4px 4px 0 0;
+    color: rgba(9,56,121,1);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-transform: uppercase;
+    margin-right: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.reload_button:hover {
+    background-color: #fff;
+    transform: translateY(-4px);
+  }

@@ -8,42 +8,50 @@ const ImgStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    line-height: 1.5;
+    letter-spacing: 0.09em;
     align-items: center;
-    border: 1px solid #121e39;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
+    width: 280px;
+    height: 400px;
     background-image: ${props => `url(${props.image})`};
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: center;
     background-blend-mode: multiply;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.65);
     transition: all 0.5s ease-in-out;
 `
 
 const DivStyled = styled.div`
-    font-size: 1rem;
-    box-shadow: #121e39 4px 4px 0 0;
-    border-radius: 10px;
-    height: 400px;
-    width: 300px;
+    margin: 15px;
+    font-size: 0.8rem;
+    box-shadow: #111 6px 6px;
+    border: 2px solid #111;
     overflow: hidden;
     &:hover ${ImgStyled} {
         transform: scale(1.05);
         background-color: rgba(0,0,0,0.4);
     }
+    &:hover h4 {
+        transform: scale(0.95);
+        transition: all 0.5s ease-in-out;
+    }
+
+    &:hover h5 {
+        transform: scale(0.95);
+        transition: all 0.5s ease-in-out;
+    }
 `;
 
-export default function CardVideogame({name, image, genres}) {
+export default function CardVideogame({id, name, image, genres}) {
+    console.log(genres);
     return (
         <DivStyled>
-            <NavLink style={({textDecoration: 'none'})} to='/videogame/id'>
+            <NavLink style={({textDecoration: 'none'})} to={`/videogame/${id}`}>
                 <ImgStyled image={image}>
-                    <h3>{name}</h3>
+                    <h4>{name}</h4>
                     <h5>{genres}</h5>
                 </ImgStyled>
             </NavLink>
         </DivStyled>
-    )
-}
+    );
+};

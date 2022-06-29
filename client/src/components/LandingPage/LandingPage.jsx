@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from "styled-components";
+import img from '../../ZS3t.gif'
 
 const DivStyled = styled.div`
     display: flex;
@@ -9,15 +10,6 @@ const DivStyled = styled.div`
     align-items: center;
     min-height: 100vh;
 `;
-
-const H2Styled = styled.h2`
-  font-size: 4rem;
-  font-weight: bold;
-  color: #fbeee0;
-  padding: 25px;
-  border: 3px dashed #fbeee0;
-  border-radius: 10px;
-`
 
 const ButtonStyled = styled.button`
   background-color: #fbeee0;
@@ -37,6 +29,7 @@ const ButtonStyled = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
   text-transform: uppercase;
+  font-family: 'Press Start 2P', cursive;
 
 &:hover {
   background-color: #fff;
@@ -49,18 +42,17 @@ const ButtonStyled = styled.button`
 }
 `
 
-const SvgStyled = styled.svg`
-  height: 150px;
-  width: 150px;
+const ImgStyled = styled.img`
+  height: 300px;
+  width: 400px;
 `
 
 export default function LandingPage() {
 
   return (
       <DivStyled>
-        <SvgStyled xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-joystick" viewBox="0 0 16 16"> <path d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2z" fill="#fbeee0"></path> <path d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23z" fill="#fbeee0"></path></SvgStyled>
-        <H2Styled>Welcome to DiB Videogames!</H2Styled>
-        <Link to='/home'><ButtonStyled>Join in</ButtonStyled></Link>
+        <ImgStyled src={img} alt="img not found" />
+        <Link to='/videogames'><ButtonStyled>Start</ButtonStyled></Link>
       </DivStyled>
     )
 };

@@ -1,41 +1,32 @@
 .navbar {
     display: flex;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
     padding: 20px;
+    width: 80%;
     /* background: rgb(2,0,36);
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,56,121,1) 95%, rgba(0,78,255,1) 100%); */
-    padding: 1%;
     color: #000;
     text-decoration: none;
 }
 
-.navlink {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5rem;
-    padding: 10px;
-    background-color: #fbeee0;
-    border: 2px solid rgba(9,56,121,1);
-    border-radius: 30px;
-    box-shadow: rgba(9,56,121,1) 4px 4px 0 0;
-    color: rgba(9,56,121,1);
-    cursor: pointer;
-    display: inline-block;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 0 18px;
-    line-height: 50px;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+.navlink{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    color: #FAFAFA;
     text-transform: uppercase;
-    margin-right: 20px;
+    text-decoration: none;
+    padding: 20px 20px;
+    border: 2px solid #111;
+    background: #572e7e;
+    box-shadow: 3px 3px #111;
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
+    margin-right: 15px;
 }
 
 .navlink:hover {
-    background-color: #fff;
+    background-color: #fedeff;
+    color: rgba(9,56,121,1);
     transform: translateY(-4px);
-  }
+}
