@@ -8,8 +8,9 @@ export default function Navbar () {
         //TODO
             <div className={s.navbar}>
                 <Link to="/videogames" className={s.navlink}>Home</Link>
-                <Link to='/videogame' className={s.navlink}>Insert Videogame</Link>
+                <Link to='/create' className={s.navlink}>Insert Videogame</Link>
                 <SearchBar/>
+                <h1 className={s.title}>Video-Game Database</h1>
             </div>
     )
 }

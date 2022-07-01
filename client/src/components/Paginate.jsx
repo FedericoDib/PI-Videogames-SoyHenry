@@ -4,7 +4,7 @@ import styled from "styled-components";
 const PaginateNav = styled.nav`
   display: flex;
   justify-content: center;
-  margin: 40px;
+  margin: 30px;
   `;
 
 const PaginateUl = styled.ul`

@@ -2,7 +2,7 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllVideogames, getGenres, filterVideogamesByName, filterVideogamesByGenre, filterVideogamesByRating} from '../../redux/actions/index.js';
+import {getAllVideogames, getGenres, filterVideogamesByName, filterVideogamesByGenre, filterVideogamesByRating, filterVideogamesByCreation} from '../../redux/actions/index.js';
 //import {Link} from "react-router-dom";
 import CardVideogame from '../CardVideogame.jsx';
 import s from "./Home.module.css";
@@ -28,10 +28,10 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleReload = () => {
-        //e.preventDefault(); ?
-        dispatch(getAllVideogames());
-    }
+    // const handleReload = () => {
+    //     //e.preventDefault(); ?
+    //     dispatch(getAllVideogames());
+    // }
 
     const handleFilterByName = (e) => {
         setListOfVideogames(dispatch(filterVideogamesByName(e.target.value)));
@@ -49,12 +49,16 @@ export default function Home() {
         setCurrentPage(1);
     }
 
+    const handleFilterByCreation = (e) => {
+        setListOfVideogames(dispatch(filterVideogamesByCreation(e.target.value)));
+        setCurrentPage(1);
+    }
+
     return (
         <div className={s.div_home}>
-            <h1>Video-Game Database</h1>
             <div className={s.div_container}>
-                <button className={s.reload_button} onClick={handleReload}>Reload DB</button>
-                <Select filterName={handleFilterByName} filterGenre={handleFilterByGenre} filterRating={handleFilterByRating}></Select>
+                {/* <button className={s.reload_button} onClick={handleReload}>Reload DB</button> */}
+                <Select filterName={handleFilterByName} filterGenre={handleFilterByGenre} filterCreated={handleFilterByCreation} filterRating={handleFilterByRating}></Select>
             </div>
             <div>
                 <Paginate videogamesPerPage={videogamesPerPage} videogames={videogames.length} paginate={paginate}/>

@@ -5,9 +5,11 @@ export const GET_GENRES = 'GET_GENRES';
 export const GET_PLATFORMS = 'GET_PLATFORMS';
 export const GET_ALL_VIDEOGAMES = 'GET_ALL_VIDEOGAMES';
 export const GET_VIDEOGAMES_BY_NAME = 'GET_VIDEOGAMES_BY_NAME';
+export const CREATE_VIDEOGAME = 'CREATE_VIDEOGAME';
 export const FILTER_BY_NAME = 'FILTER_BY_NAME';
 export const FILTER_BY_GENRE = 'FILTER_BY_GENRE';
 export const FILTER_BY_RATING = 'FILTER_BY_RATING';
+export const FILTER_BY_CREATION = 'FILTER_BY_CREATION';
 
 // action creator
 export const getAllVideogames = () => {
@@ -58,6 +60,20 @@ export const getDetailVideogame = (id) => {
 	};
 };
 
+export const createVideogame = (videogame) => {
+	return async function (dispatch) {
+		const newVideogame = await axios.post(
+			'http://localhost:3001/videogames',
+			videogame
+		);
+
+		return dispatch({
+			type: CREATE_VIDEOGAME,
+			payload: newVideogame.data,
+		});
+	};
+};
+
 export const filterVideogamesByName = (payload) => {
 	return {
 		type: FILTER_BY_NAME,
@@ -75,6 +91,13 @@ export const filterVideogamesByGenre = (payload) => {
 export const filterVideogamesByRating = (payload) => {
 	return {
 		type: FILTER_BY_RATING,
+		payload,
+	};
+};
+
+export const filterVideogamesByCreation = (payload) => {
+	return {
+		type: FILTER_BY_CREATION,
 		payload,
 	};
 };

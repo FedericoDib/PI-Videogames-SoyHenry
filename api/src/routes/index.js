@@ -24,27 +24,42 @@ const getAllVideogames = async () => {
 			genres: vg.genres.map((g) => g.name).join(', '),
 		};
 	});
-	console.log(videogames);
 	return videogames;
 };
 
 const getVideogameById = async (vgId) => {
-	const videogame = (
-		await axios.get(`https://api.rawg.io/api/games/${vgId}?key=${API_KEY}`)
-	).data;
+	if (vgId.includes('api')) {
+		vgId = vgId.slice(3);
 
-	const videogameFormat = {
-		id: videogame.id,
-		background_image: videogame.background_image,
-		name: videogame.name,
-		description: videogame.description_raw && videogame.description_raw,
-		released: videogame.released,
-		rating: videogame.rating,
-		platforms: videogame.platforms.map((p) => p.platform.name).join(', '),
-		genres: videogame.genres.map((g) => g.name).join(', '),
-	};
+		const videogame = (
+			await axios.get(`https://api.rawg.io/api/games/${vgId}?key=${API_KEY}`)
+		).data;
 
-	return videogameFormat;
+		const videogameFormat = {
+			id: 'api' + videogame.id,
+			background_image: videogame.background_image,
+			name: videogame.name,
+			description: videogame.description_raw && videogame.description_raw,
+			released: videogame.released,
+			rating: videogame.rating,
+			platforms: videogame.platforms.map((p) => p.platform.name).join(', '),
+			genres: videogame.genres.map((g) => g.name).join(', '),
+		};
+
+		return videogameFormat;
+	} else if (vgId.includes('database')) {
+		const videogame = await Videogame.findByPk(vgId);
+		const videogameFormat = {
+			background_image: videogame.background_image,
+			name: videogame.name,
+			description: videogame.description,
+			released: videogame.released,
+			rating: videogame.rating,
+			platforms: videogame.platforms,
+			genres: videogame.genres,
+		};
+		return videogameFormat;
+	}
 };
 
 const getVideogameByName = async (name) => {
@@ -82,7 +97,9 @@ const getInfoDatabase = async () => {
 };
 
 const createVideogame = async (videogame) => {
+	let uniqueId = new Date().getTime();
 	const {
+		id = 'database' + uniqueId,
 		name,
 		description,
 		background_image,
@@ -92,6 +109,7 @@ const createVideogame = async (videogame) => {
 		genres,
 	} = videogame;
 	const videogameCreated = await Videogame.create({
+		id,
 		name,
 		description,
 		background_image,
@@ -103,6 +121,7 @@ const createVideogame = async (videogame) => {
 		where: { name: genres },
 	});
 	videogameCreated.addGenres(genreDb);
+	console.log(videogameCreated);
 	return videogameCreated;
 };
 
@@ -134,6 +153,7 @@ router.get('/videogame/:id', async (req, res) => {
 });
 
 router.post('/videogames', async (req, res) => {
+	console.log('hola');
 	try {
 		const newVideogame = await createVideogame(req.body);
 		res.status(201).send(newVideogame);

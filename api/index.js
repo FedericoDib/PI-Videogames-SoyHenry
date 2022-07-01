@@ -27,7 +27,7 @@ const getInfoAPI = require('./src/routes/index.js');
 
 // Syncing all the models at once.
 conn.sync(syncOptions).then(() => {
-	server.listen(3001, async () => {
+	server.listen(process.env.PORT, async () => {
 		console.log('%s listening at 3001'); // eslint-disable-line no-console
 
 		if (syncOptions.force) {
@@ -71,7 +71,7 @@ conn.sync(syncOptions).then(() => {
 
 			const VideogameFormat = videogames.map((videogame) => {
 				return {
-					id: videogame.id,
+					id: 'api' + videogame.id,
 					name: videogame.name,
 					description: videogame.description,
 					image: videogame.background_image,

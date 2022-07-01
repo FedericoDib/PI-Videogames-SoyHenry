@@ -3,13 +3,16 @@ import {
 	GET_VIDEOGAMES_BY_NAME,
 	GET_GENRES,
 	GET_DETAILS,
+	CREATE_VIDEOGAME,
 	FILTER_BY_NAME,
 	FILTER_BY_GENRE,
 	FILTER_BY_RATING,
+	FILTER_BY_CREATION,
 } from '../actions/index.js';
 
 const initialState = {
 	videogames: [],
+	allVideogames: [],
 	genres: [],
 	detailVideogame: {},
 };
@@ -20,6 +23,7 @@ export default function rootReducer(state = initialState, action) {
 			return {
 				...state,
 				videogames: action.payload,
+				allVideogames: action.payload,
 			};
 		case GET_VIDEOGAMES_BY_NAME:
 			return {
@@ -35,6 +39,11 @@ export default function rootReducer(state = initialState, action) {
 			return {
 				...state,
 				detailVideogame: action.payload,
+			};
+		case CREATE_VIDEOGAME:
+			return {
+				...state,
+				videogames: [...state.videogames, action.payload],
 			};
 		case FILTER_BY_NAME:
 			if (action.payload === 'asc') {
@@ -79,17 +88,29 @@ export default function rootReducer(state = initialState, action) {
 				};
 			}
 		case FILTER_BY_GENRE:
+			const allVg = state.allVideogames;
 			const VGbyGenre =
 				action.payload === 'All'
-					? state.videogames
-					: state.videogames.filter((videogame) => {
+					? allVg
+					: allVg.filter((videogame) => {
 							return videogame.genres.includes(action.payload);
 					  });
-			console.log(VGbyGenre);
 			return {
 				...state,
 				videogames: VGbyGenre,
 			};
+		case FILTER_BY_CREATION:
+			const VGbyCreation =
+				action.payload === 'All'
+					? state.videogames
+					: state.videogames.filter((videogame) => {
+							return videogame.id.includes(action.payload);
+					  });
+			return {
+				...state,
+				videogames: VGbyCreation,
+			};
+
 		default:
 			return state;
 	}

@@ -21,7 +21,8 @@ class DetailVideogame extends React.Component {
                     <Link to='/videogames'><button className={s.button_back}>Back</button></Link>
                     <h1 className={s.title}>{this.props.detail.name}</h1>
                 </div>
-                {!this.props.detail ? <p>Loading...</p> :
+                {/*TODO: hacer funcionar el loader*/  }
+                {!this.props.detail ? (<Loader/>) : (
                     <>
                         <img className={s.img_videogame} src={this.props.detail.background_image} alt="img not found"></img>
                         <div className={s.div_container_desc}>
@@ -36,6 +37,7 @@ class DetailVideogame extends React.Component {
                         </div>
                         <h4>{this.props.detail.description}</h4>
                     </>
+                    )
                 }
             </div>
         </div>

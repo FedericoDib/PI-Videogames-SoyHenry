@@ -3,36 +3,40 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
 	// defino el modelo
-	sequelize.define('videogame', {
-		id: {
-			type: DataTypes.INTEGER,
-			primaryKey: true,
-			autoIncrement: true,
-			allowNull: false,
-			// type: DataTypes.UUID,
-			// defaultValue: DataTypes.UUIDV4,
+	sequelize.define(
+		'videogame',
+		{
+			id: {
+				type: DataTypes.STRING,
+				primaryKey: true,
+				allowNull: false,
+				// type: DataTypes.UUID,
+				// defaultValue: DataTypes.UUIDV4,
+			},
+			name: {
+				type: DataTypes.STRING,
+				unique: true,
+				allowNull: false,
+			},
+			image: {
+				type: DataTypes.STRING,
+			},
+			description: {
+				type: DataTypes.STRING,
+			},
+			released: {
+				type: DataTypes.STRING,
+			},
+			rating: {
+				type: DataTypes.DECIMAL,
+			},
+			platforms: {
+				type: DataTypes.STRING,
+				allowNull: false,
+			},
 		},
-		name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		image: {
-			type: DataTypes.STRING,
-		},
-		description: {
-			type: DataTypes.STRING,
-		},
-		released: {
-			type: DataTypes.STRING,
-		},
-		rating: {
-			type: DataTypes.DECIMAL,
-		},
-		platforms: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-	});
+		{ timestamps: false }
+	);
 };
 
 // Videojuego con las siguientes propiedades:

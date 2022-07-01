@@ -12,27 +12,22 @@ const DivStyled = styled.div`
 `;
 
 const ButtonStyled = styled.button`
-  background-color: #fbeee0;
-  border: 2px solid rgba(9,56,121,1);
-  border-radius: 30px;
-  box-shadow: rgba(9,56,121,1) 4px 4px 0 0;
-  color: rgba(9,56,121,1);
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 0 18px;
-  line-height: 50px;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  text-transform: uppercase;
   font-family: 'Press Start 2P', cursive;
+  font-size: 0.9rem;
+  color: #FAFAFA;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 20px 20px;
+  border: 2px solid #111;
+  background: #572e7e;
+  box-shadow: 3px 3px #111;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
 
 &:hover {
-  background-color: #fff;
+  background-color: #ddd;
+  color: #111;
   transform: translateY(-2px);
 }
 

@@ -3,7 +3,7 @@
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    width: 80%;
+    width: 90%;
     /* background: rgb(2,0,36);
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,56,121,1) 95%, rgba(0,78,255,1) 100%); */
     color: #000;
@@ -29,4 +29,12 @@
     background-color: #fedeff;
     color: rgba(9,56,121,1);
     transform: translateY(-4px);
+}
+
+.title{
+    margin-left: 175px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.3rem;
+    color: #FAFAFA;
+    text-transform: uppercase;
 }

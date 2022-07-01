@@ -109,12 +109,12 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 **Pagina inicial**: deben armar una landing page con
 
-- [ ] Alguna imagen de fondo representativa al proyecto
+- [✔️] Alguna imagen de fondo representativa al proyecto
 - [✔️] Botón para ingresar al home (`Ruta principal`)
 
 **Ruta principal**: debe contener
 
-- [ ] Input de búsqueda para encontrar videojuegos por nombre
+- [✔️] Input de búsqueda para encontrar videojuegos por nombre
 - [✔️] Área donde se verá el listado de videojuegos. Deberá mostrar su:
   - Imagen
   - Nombre
@@ -142,7 +142,7 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
   - Rating
 - [ ] Posibilidad de seleccionar/agregar varios géneros
 - [ ] Posibilidad de seleccionar/agregar varias plataformas
-- [ ] Botón/Opción para crear un nuevo videojuego
+- [✔️] Botón/Opción para crear un nuevo videojuego
 
 > Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre del juego no pueda contener algunos símbolos, que el rating no pueda exceder determinado valor, etc.
 
