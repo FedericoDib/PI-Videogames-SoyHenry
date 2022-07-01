@@ -14,7 +14,7 @@ export const FILTER_BY_CREATION = 'FILTER_BY_CREATION';
 // action creator
 export const getAllVideogames = () => {
 	return async function (dispatch) {
-		const videogames = await axios.get('http://localhost:3001/videogames');
+		const videogames = await axios.get('/videogames');
 
 		return dispatch({
 			type: GET_ALL_VIDEOGAMES,
@@ -25,9 +25,7 @@ export const getAllVideogames = () => {
 
 export const getVideogamesByName = (name) => {
 	return async function (dispatch) {
-		const videogames = await axios.get(
-			`http://localhost:3001/videogames?name=${name}`
-		);
+		const videogames = await axios.get(`/videogames?name=${name}`);
 
 		return dispatch({
 			type: GET_VIDEOGAMES_BY_NAME,
@@ -38,7 +36,7 @@ export const getVideogamesByName = (name) => {
 
 export const getGenres = () => {
 	return async function (dispatch) {
-		const genres = await axios.get('http://localhost:3001/genres');
+		const genres = await axios.get('/genres');
 
 		return dispatch({
 			type: GET_GENRES,
@@ -49,9 +47,7 @@ export const getGenres = () => {
 
 export const getDetailVideogame = (id) => {
 	return async function (dispatch) {
-		const detailVideogame = await axios.get(
-			`http://localhost:3001/videogame/${id}`
-		);
+		const detailVideogame = await axios.get(`/videogame/${id}`);
 
 		return dispatch({
 			type: GET_DETAILS,
@@ -62,10 +58,7 @@ export const getDetailVideogame = (id) => {
 
 export const createVideogame = (videogame) => {
 	return async function (dispatch) {
-		const newVideogame = await axios.post(
-			'http://localhost:3001/videogames',
-			videogame
-		);
+		const newVideogame = await axios.post('/videogames', videogame);
 
 		return dispatch({
 			type: CREATE_VIDEOGAME,
