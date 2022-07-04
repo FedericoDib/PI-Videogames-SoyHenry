@@ -45,10 +45,20 @@ export const getGenres = () => {
 	};
 };
 
+export const getPlatforms = () => {
+	return async function (dispatch) {
+		const platforms = await axios.get('/platforms');
+
+		return dispatch({
+			type: GET_PLATFORMS,
+			payload: platforms.data,
+		});
+	};
+};
+
 export const getDetailVideogame = (id) => {
 	return async function (dispatch) {
 		const detailVideogame = await axios.get(`/videogame/${id}`);
-
 		return dispatch({
 			type: GET_DETAILS,
 			payload: detailVideogame.data,
@@ -59,7 +69,7 @@ export const getDetailVideogame = (id) => {
 export const createVideogame = (videogame) => {
 	return async function (dispatch) {
 		const newVideogame = await axios.post('/videogames', videogame);
-
+		console.log(newVideogame);
 		return dispatch({
 			type: CREATE_VIDEOGAME,
 			payload: newVideogame.data,

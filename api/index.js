@@ -56,18 +56,17 @@ conn.sync(syncOptions).then(() => {
 				console.log('Videojuegos cargados por página: ' + videogames.length);
 			}
 
-			// let APIplataforms = videogames.map((videogame) =>
-			// 	videogame.platforms.map((platform) => platform.platform.name)
-			// );
+			let APIplataforms = videogames.map((videogame) =>
+				videogame.platforms.map((platform) => platform.platform.name)
+			);
 
-			// APIplataforms = [...new Set(APIplataforms.flat())].sort();
-			// console.log(APIplataforms);
+			APIplataforms = [...new Set(APIplataforms.flat())].sort();
 
-			// APIplataforms.forEach((p) => {
-			// 	Platform.create({
-			// 		name: p,
-			// 	});
-			// });
+			APIplataforms.forEach((p) => {
+				Platform.create({
+					name: p,
+				});
+			});
 
 			const VideogameFormat = videogames.map((videogame) => {
 				return {

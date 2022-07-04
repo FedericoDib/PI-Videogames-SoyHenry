@@ -8,6 +8,7 @@ import CardVideogame from '../CardVideogame.jsx';
 import s from "./Home.module.css";
 import Paginate from "../Paginate.jsx";
 import Select from "../Select/Select.jsx";
+import Loader from "../Loader.jsx";
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -65,10 +66,9 @@ export default function Home() {
             </div>
             <div className={s.div_videogames__container}>
             {
-                currentVideogames?.map(videogame => {
-                    console.log(videogame.genre);
+                currentVideogames.length ? currentVideogames.map(videogame => {
                     return <CardVideogame id={videogame.id} name={videogame.name} image={videogame.image} genres={videogame.genres}/>
-                })
+                }) : (<Loader/>)
             }
             </div>
         </div>

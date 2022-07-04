@@ -8,12 +8,14 @@ import {
 	FILTER_BY_GENRE,
 	FILTER_BY_RATING,
 	FILTER_BY_CREATION,
+	GET_PLATFORMS,
 } from '../actions/index.js';
 
 const initialState = {
 	videogames: [],
 	allVideogames: [],
 	genres: [],
+	platforms: [],
 	detailVideogame: {},
 };
 
@@ -34,6 +36,11 @@ export default function rootReducer(state = initialState, action) {
 			return {
 				...state,
 				genres: action.payload,
+			};
+		case GET_PLATFORMS:
+			return {
+				...state,
+				platforms: action.payload,
 			};
 		case GET_DETAILS:
 			return {
