@@ -10,6 +10,8 @@ export const FILTER_BY_NAME = 'FILTER_BY_NAME';
 export const FILTER_BY_GENRE = 'FILTER_BY_GENRE';
 export const FILTER_BY_RATING = 'FILTER_BY_RATING';
 export const FILTER_BY_CREATION = 'FILTER_BY_CREATION';
+export const CLEAR_DETAILS = 'CLEAR_DETAILS';
+export const DELETE_VIDEOGAME = 'DELETE_VIDEOGAME';
 
 // action creator
 export const getAllVideogames = () => {
@@ -25,12 +27,19 @@ export const getAllVideogames = () => {
 
 export const getVideogamesByName = (name) => {
 	return async function (dispatch) {
-		const videogames = await axios.get(`/videogames?name=${name}`);
+		try {
+			let videogames = await axios.get(`/videogames?name=${name}`);
 
-		return dispatch({
-			type: GET_VIDEOGAMES_BY_NAME,
-			payload: videogames.data,
-		});
+			return dispatch({
+				type: GET_VIDEOGAMES_BY_NAME,
+				payload: videogames.data,
+			});
+		} catch (error) {
+			return dispatch({
+				type: GET_VIDEOGAMES_BY_NAME,
+				payload: [],
+			});
+		}
 	};
 };
 
@@ -105,10 +114,17 @@ export const filterVideogamesByCreation = (payload) => {
 	};
 };
 
-// module.exports = {
-// 	GET_ALL_VIDEOGAMES,
-// 	GET_VIDEOGAME,
-// 	GET_GENRES,
-// 	GET_PLATFORMS,
-// 	getAllVideogames,
-// };
+export const clearDetails = () => {
+	return {
+		type: CLEAR_DETAILS,
+	};
+};
+
+export const deleteVideogame = async (id) => {
+	const videogame = axios.delete(`/videogame/${id}`);
+
+	return {
+		type: DELETE_VIDEOGAME,
+		payload: videogame.data,
+	};
+};

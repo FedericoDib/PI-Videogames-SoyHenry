@@ -10,8 +10,6 @@ module.exports = (sequelize) => {
 				type: DataTypes.STRING,
 				primaryKey: true,
 				allowNull: false,
-				// type: DataTypes.UUID,
-				// defaultValue: DataTypes.UUIDV4,
 			},
 			name: {
 				type: DataTypes.STRING,
@@ -23,6 +21,8 @@ module.exports = (sequelize) => {
 			},
 			description: {
 				type: DataTypes.STRING,
+				allowNull: false,
+				defaultValue: '',
 			},
 			released: {
 				type: DataTypes.STRING,

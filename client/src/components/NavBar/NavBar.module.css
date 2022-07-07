@@ -1,9 +1,9 @@
 .navbar {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
-    padding: 20px;
-    width: 90%;
+    padding: 20px 0 20px 0px;
+    width: 85vw;
     /* background: rgb(2,0,36);
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,56,121,1) 95%, rgba(0,78,255,1) 100%); */
     color: #000;

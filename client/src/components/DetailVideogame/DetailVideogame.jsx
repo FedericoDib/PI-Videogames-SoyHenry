@@ -1,32 +1,28 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { getDetailVideogame } from '../../redux/actions/index.js';
+import { getDetailVideogame, deleteVideogame } from '../../redux/actions/index.js';
 import s from "./DetailVideogame.module.css";
 import {Link} from "react-router-dom";
-import Loader from "../Loader.jsx";
+import Loader from "../Loader/Loader.jsx";
 
 class DetailVideogame extends React.Component {
-
     componentDidMount() {
         const { id } = this.props.match.params;
-        this.setState({
-            detail: this.props.getDetailVideogame(id)
-
-            })
+        this.props.getDetailVideogame(id)
     }
 
-	render() { //definir un loader
-        
-
-
-		return (
+	render() {
+        return (
         <div className={s.div_container}>
             <div className={s.div_container_videogame}>
                 <div className={s.div_title}>
                     <h1 className={s.title}>{this.props.detail.name}</h1>
-                    <Link to='/videogames'><button className={s.button_back}>Back</button></Link>
+                    {
+                        this.props.match.params.id.includes('database') ? (<button onClick={() => deleteVideogame(this.props.match.params.id)}>Delete</button>) : null
+                    }
+                    
+                    <Link to='/videogames'><button className={s.button_back} onClick={this.handleDetail}>Back</button></Link>
                 </div>
-                {/*TODO: hacer funcionar el loader*/  }
                 {!this.props.detail.name ? (<Loader/>) : (
                     <>
                     <div className={s.div_container_details}>
@@ -49,13 +45,15 @@ class DetailVideogame extends React.Component {
 
 function mapStateToProps(state) {
     return {
-      detail: state.detailVideogame
+      detail: state.detailVideogame,
+      actualVideogames: state.actualVideogames
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         getDetailVideogame: id => dispatch(getDetailVideogame(id)),
+        deleteVideogame : id => dispatch(deleteVideogame(id))
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(DetailVideogame);

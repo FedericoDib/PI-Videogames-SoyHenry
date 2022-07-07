@@ -15,7 +15,3 @@ module.exports = (sequelize) => {
 		}
 	);
 };
-
-// Genero con las siguientes propiedades:
-// ID
-// Nombre

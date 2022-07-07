@@ -1,146 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import {getGenres, getPlatforms, createVideogame, getAllVideogames} from '../redux/actions/index.js'
-
-const FormStyled = styled.form`
-    font-family: 'Press Start 2P', cursive;
-    letter-spacing: 1px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 30px 0;
-    `
-
-const DivFormStyled = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 60%;
-    border: 2px solid #ddd;
-    color: #ddd;
-    background-image: linear-gradient( 89.7deg,  rgba(132,53,142,1) 2.8%, rgba(0,32,95,1) 97.8% );
-    padding: 40px;
-    box-shadow: 7px 7px #111;
-  `
-
-  const DivStyled = styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-    `
-
-const DivInputsStyled = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 40px;
-  input, textarea {
-    font-family: 'Press Start 2P', cursive;
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #111;
-    color: #111;
-    box-shadow: 3px 3px #111;
-    align-items: left;
-    padding-left: 1.5rem;
-    resize: none;
-    &:focus {
-      outline: none;
-    }
-    &.error {
-      border: 2px solid hsl(0, 69%, 50%);
-      box-shadow: 3px 3px hsl(10, 95%, 21%);
-    }
-  }
-  textarea {
-    margin-bottom: 10px;
-    &.error {
-      border: 2px solid hsl(0, 69%, 50%);
-      box-shadow: 3px 3px hsl(10, 95%, 21%);
-    }
-  }
-  label {
-    font-size: 0.85rem;
-    width: 30%;
-    text-align: left;
-    margin: 20px;
-  }
-  select {
-    font-family: 'Press Start 2P', cursive;
-    width: 80%;
-    margin: 0 20px 10px 20px;
-    padding: 10px;
-    border: 2px solid #111;
-    color: #111;
-    box-shadow: 3px 3px #111;
-    &:focus {
-      outline: none;
-    }
-    &.error {
-      border: 2px solid hsl(0, 69%, 50%);
-      box-shadow: 3px 3px hsl(10, 95%, 21%);
-    }
-  }
-`
-const ButtonStyled = styled.button`
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.9rem;
-  color: #FAFAFA;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 20px 20px;
-  border: 2px solid #111;
-  background: #572e7e;
-  box-shadow: 3px 3px #111;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  margin-right: 15px;
-  &:hover {
-      background-color: #fedeff;
-      color: rgba(9,56,121,1);
-      transform: translateY(-4px);
-  }
-`
-
-const DivSelectButton = styled.div`
-  display: flex;
-  background-color: #111;
-  color: #FAFAFA;
-  margin: 5px;
-  padding: 10px;
-  border: 2px solid #ddd;
-  button {
-    padding: 5px;
-    margin: 5px 0px;
-    }
-    `
-
-    const DivGPStyled = styled.div`
-    display: flex;
-    width: 50%;
-    flex-direction: column;
-    align-items: center;
-    span{
-      text-align: center;
-    }
-`
-
-const SpanStyled = styled.span`
-  text-align: end;
-  padding: 0 10px;
-  width: 100%;
-  font-size: 0.6rem;
-  border-radius: 5px;
-  color: hsl(0, 69%, 50%);`
+import {getGenres, getPlatforms, createVideogame, getAllVideogames} from '../../redux/actions/index.js'
+import { FormStyled, DivFormStyled, DivGPStyled, DivSelectButton, DivInputsStyled, DivStyled, ButtonStyled, SpanStyled } from './CreateVideogame'
 
 export class CreateVideogame extends Component {
   constructor(props) {
@@ -176,26 +38,24 @@ export class CreateVideogame extends Component {
   componentDidMount() {
     this.props.getGenres()
     this.props.getPlatforms()
-    // this.handleErrors()
   }
   
   handleChange(event) {
+
     this.setState({
       newVideogame: {
         ...this.state.newVideogame,
         [event.target.name]: event.target.value
       }
     })
-    // this.handleErrors()
+    console.log(this.state.errors)
   }
 
   handleSubmit(e) {
     e.preventDefault()
     console.log('hola')
 
-    //verificar que las propiedades del state errors esten vacias
-
-    if (Object.values(this.state.errors).every(el => el === '') && Object.values(this.state.newVideogame).every(el => el !== '' && el !== 0 && el !== [])) {
+    if (Object.values(this.state.errors).every(el => el === '') && Object.values(this.state.newVideogame).every(el => el !== '' && el !== 0 && el.length !== 0)) {
       this.props.getAllVideogames().then(() => {
         console.log(this.props.videogames)
         const videogame = this.props.videogames.find(videogame => videogame.name === this.state.newVideogame.name)
@@ -223,7 +83,6 @@ export class CreateVideogame extends Component {
         }
       })
     }
-    // this.handleErrors()
   }
 
   handleGenres(event) {
@@ -235,7 +94,6 @@ export class CreateVideogame extends Component {
         }
       })
     }
-    // this.handleErrors()
   }
 
   handleDelete(event) {
@@ -246,7 +104,6 @@ export class CreateVideogame extends Component {
         genres: this.state.newVideogame.genres.filter(genre => genre !== event.target.id)
       }
     })
-    // this.handleErrors()
   }
 
   handleErrors(e) {
@@ -255,20 +112,19 @@ export class CreateVideogame extends Component {
       return this.state.errors
     }
 
-    const errors = {}
+    let errors = {
+      ...this.state.errors
+    }
 
     document.querySelectorAll('input').forEach(input => {
       input.classList.remove('error')
     })
     document.querySelectorAll('textarea').forEach(textarea => {
       textarea.classList.remove('error')
-    }
-    )
+    })
     document.querySelectorAll('select').forEach(select => {
       select.classList.remove('error')
-    }
-    )
-
+    })
     if (!e.target.value) {
       errors[e.target.name] = `${e.target.name} is required`
       document.getElementById(`${e.target.id}`).classList.add('error')
@@ -281,45 +137,17 @@ export class CreateVideogame extends Component {
       document.getElementById(`${e.target.id}`).classList.add('error')
     }
 
-    if (e.target.name === 'rating' && (e.target.value < 0 || e.target.value > 5)) {
+    if (e.target.name === 'rating' && (e.target.value < 0 || e.target.value > 5 || isNaN(e.target.value))) {
+      console.log("🚀 ~ file: CreateVideogame.jsx ~ line 137 ~ CreateVideogame ~ handleErrors ~ isNaN(e.target.value)", isNaN(e.target.value))
       errors[e.target.name] = 'Rating must be between 0 and 5'
       document.getElementById(`${e.target.id}`).classList.add('error')
     }
-    
-    // if (this.state.newVideogame.name === '') {
-    //   errors.name = 'Name is required'
-    //   document.getElementById('name').classList.add('error')
-    // }
-    // if (this.state.newVideogame.description === '') {
-    //   errors.description = 'description is required'
-    //   document.getElementById('description').classList.add('error')
-    // }
-    // if (this.state.newVideogame.released === '') {
-    //   errors.released = 'released is required'
-    //   document.getElementById('released').classList.add('error')
-    // }
-    // if (this.state.newVideogame.rating === '') {
-    //   errors.rating = 'rating is required'
-    //   document.getElementById('rating').classList.add('error')
-    // }
-    // if (this.state.newVideogame.image === '') {
-    //   errors.image = 'image is required'
-    //   document.getElementById('image').classList.add('error')
-    // }
-    // if (this.state.newVideogame.platforms.length === 0) {
-    //   errors.platforms = 'platforms is required'
-    //   document.getElementById('platforms').classList.add('error')
-    // }
-    // if (this.state.newVideogame.genres.length === 0) {
-    //   errors.genres = 'genres is required'
-    //   document.getElementById('genres').classList.add('error')
-    // }
+
+    console.log(errors)
 
     this.setState({
-      errors: errors
+        errors: errors
     })
-    console.log(this.state.newVideogame)
-    console.log(this.state.errors)
   }
 
   render() {
@@ -395,8 +223,6 @@ export class CreateVideogame extends Component {
                   }
                   <SpanStyled>{this.state.errors.genres && <p>{this.state.errors.genres}</p>}</SpanStyled>
                   </DivGPStyled>
-                  
-                  
               </DivInputsStyled>
               <ButtonStyled type="submit">Create</ButtonStyled>
             </DivFormStyled>
@@ -407,7 +233,6 @@ export class CreateVideogame extends Component {
 }
 
 function mapStateToProps(state) {
-  //TODO - ver si hace falta esto o no jaja
   return {
       genres: state.genres,
       platforms: state.platforms,

@@ -1,5 +1,5 @@
 import React from 'react'
-import image from '../XVo6.gif'
+import image from '../../XVo6.gif'
 import styled from 'styled-components'
 
 const LoaderStyled = styled.img`

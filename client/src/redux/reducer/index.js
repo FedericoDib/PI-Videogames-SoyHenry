@@ -9,6 +9,8 @@ import {
 	FILTER_BY_RATING,
 	FILTER_BY_CREATION,
 	GET_PLATFORMS,
+	CLEAR_DETAILS,
+	DELETE_VIDEOGAME,
 } from '../actions/index.js';
 
 const initialState = {
@@ -31,6 +33,7 @@ export default function rootReducer(state = initialState, action) {
 			return {
 				...state,
 				videogames: action.payload,
+				allVideogames: action.payload,
 			};
 		case GET_GENRES:
 			return {
@@ -95,11 +98,10 @@ export default function rootReducer(state = initialState, action) {
 				};
 			}
 		case FILTER_BY_GENRE:
-			const allVg = state.allVideogames;
 			const VGbyGenre =
 				action.payload === 'All'
-					? allVg
-					: allVg.filter((videogame) => {
+					? state.allVideogames
+					: state.allVideogames.filter((videogame) => {
 							return videogame.genres.includes(action.payload);
 					  });
 			return {
@@ -109,15 +111,23 @@ export default function rootReducer(state = initialState, action) {
 		case FILTER_BY_CREATION:
 			const VGbyCreation =
 				action.payload === 'All'
-					? state.videogames
-					: state.videogames.filter((videogame) => {
+					? state.allVideogames
+					: state.allVideogames.filter((videogame) => {
 							return videogame.id.includes(action.payload);
 					  });
 			return {
 				...state,
 				videogames: VGbyCreation,
 			};
-
+		case CLEAR_DETAILS:
+			return {
+				...state,
+				detailVideogame: {},
+			};
+		case DELETE_VIDEOGAME:
+			return {
+				...state,
+			};
 		default:
 			return state;
 	}

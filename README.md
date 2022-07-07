@@ -119,7 +119,7 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
   - Imagen
   - Nombre
   - Géneros
-- [ ] Botones/Opciones para filtrar por género y por videojuego existente o agregado por nosotros
+- [✔️] Botones/Opciones para filtrar por género y por videojuego existente o agregado por nosotros
 - [✔️] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los videojuegos por orden alfabético y por rating
 - [✔️] Paginado para ir buscando y mostrando los siguientes videojuegos, 15 juegos por pagina, mostrando los primeros 15 en la primer pagina.
 
@@ -135,13 +135,13 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 **Ruta de creación de videojuegos**: debe contener
 
-- [ ] Un formulario **controlado con JavaScript** con los siguientes campos:
+- [✔️] Un formulario **controlado con JavaScript** con los siguientes campos:
   - Nombre
   - Descripción
   - Fecha de lanzamiento
   - Rating
-- [ ] Posibilidad de seleccionar/agregar varios géneros
-- [ ] Posibilidad de seleccionar/agregar varias plataformas
+- [✔️] Posibilidad de seleccionar/agregar varios géneros
+- [✔️] Posibilidad de seleccionar/agregar varias plataformas
 - [✔️] Botón/Opción para crear un nuevo videojuego
 
 > Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre del juego no pueda contener algunos símbolos, que el rating no pueda exceder determinado valor, etc.
@@ -174,14 +174,14 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 - [✔️] **GET /videogames**:
   - Obtener un listado de los videojuegos
   - Debe devolver solo los datos necesarios para la ruta principal
-- [ ] **GET /videogames?name="..."**:
+- [✔️] **GET /videogames?name="..."**:
   - Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
   - Si no existe ningún videojuego mostrar un mensaje adecuado
 - [✔️] **GET /videogame/{idVideogame}**:
   - Obtener el detalle de un videojuego en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de videojuego
   - Incluir los géneros asociados
-- [ ] **POST /videogames**:
+- [✔️] **POST /videogames**:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
   - Crea un videojuego en la base de datos, relacionado a sus géneros.
 - [✔️] **GET /genres**:
