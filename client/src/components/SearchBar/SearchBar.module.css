@@ -32,4 +32,16 @@
     width: 1rem;
     height: 1rem;
 }
+
+@media screen and (max-width: 768px) {
+    .searchBar {
+        margin: 40px 15px 20px 15px;
+    }
+    .icon {
+        top: 3.74rem;
+        left: 2rem;
+    }
+}
+
+
    

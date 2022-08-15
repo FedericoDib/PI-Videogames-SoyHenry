@@ -11,6 +11,7 @@ import {
 	GET_PLATFORMS,
 	CLEAR_DETAILS,
 	DELETE_VIDEOGAME,
+	SET_CURRENT_PAGE,
 } from '../actions/index.js';
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
 	genres: [],
 	platforms: [],
 	detailVideogame: {},
+	currentPage: 1,
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -127,6 +129,11 @@ export default function rootReducer(state = initialState, action) {
 		case DELETE_VIDEOGAME:
 			return {
 				...state,
+			};
+		case SET_CURRENT_PAGE:
+			return {
+				...state,
+				currentPage: action.payload,
 			};
 		default:
 			return state;

@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    font-size: 1rem;
+    padding: 20px;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    fill: #fff;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .footer {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .anchors {
+        margin-bottom: 20px;
+    }
+}

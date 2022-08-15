@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {getGenres, getPlatforms, createVideogame, getAllVideogames} from '../../redux/actions/index.js'
-import { FormStyled, DivFormStyled, DivGPStyled, DivSelectButton, DivInputsStyled, DivStyled, ButtonStyled, SpanStyled } from './CreateVideogame'
+import { FormStyled, DivFormStyled, DivGPStyled, DivSelectButton, DivInputsStyled, DivStyled, ButtonStyled, SpanStyled, DivTitle } from './CreateVideogame'
 
 export class CreateVideogame extends Component {
   constructor(props) {
@@ -155,10 +155,10 @@ export class CreateVideogame extends Component {
         <>
           <FormStyled action="" onSubmit={this.handleSubmit}>
             <DivFormStyled>
-              <DivStyled>
+              <DivTitle>
                 <h1>Create a videogame</h1>
                 <Link to='/videogames'><ButtonStyled>Back</ButtonStyled></Link>
-              </DivStyled>
+              </DivTitle>
               <DivInputsStyled>
                 <DivStyled>
                   <label htmlFor="name">Name:</label>
@@ -172,7 +172,7 @@ export class CreateVideogame extends Component {
                 <SpanStyled>{this.state.errors.released && <p>{this.state.errors.released}</p>}</SpanStyled>
                 <DivStyled>
                   <label htmlFor="rating">Rating:</label>
-                  <input onFocus={(e) => this.handleErrors(e)} onBlur={(e) => this.handleErrors(e)} onChange={this.handleChange} type="number" min="0" max="5" step="0.1" id="rating" name="rating" placeholder="Game rating (0-5)..."/>
+                  <input onFocus={(e) => this.handleErrors(e)} onBlur={(e) => this.handleErrors(e)} onChange={this.handleChange} type="text" min="0" max="5" step="0.1" id="rating" name="rating" placeholder="Game rating (0-5)..."/>
                 </DivStyled>
                 <SpanStyled>{this.state.errors.rating && <p>{this.state.errors.rating}</p>}</SpanStyled>
                 <DivStyled>

@@ -64,3 +64,50 @@
 .description {
     padding: 0 30px;
 }
+
+@media screen and (max-width: 768px) {
+
+    .div_container {
+        margin: 0px 30px;
+        text-align: start;
+    }
+
+    .div_container_videogame {
+        padding: 0px 30px;
+    }
+
+    .div_title{
+        flex-direction: column-reverse;
+        padding: 30px 0 10px 0;
+    }
+    
+    h1 {
+        line-height: 1.9rem;
+    }
+
+    a {
+        margin-bottom: 10px;
+    }
+
+    .div_container_details {
+        flex-direction: column;
+    }
+
+    .img_videogame{
+        height: 100%;
+        width: 100%;
+        border: 2px solid #ddd;
+        object-fit: contain;
+    }
+
+    .description {
+        padding: 0;
+    }
+
+    .div_bottom_desc {
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        align-items: flex-start;
+    }
+}

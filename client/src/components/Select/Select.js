@@ -5,6 +5,15 @@ export const DivContainerStyled = styled.div`
 	justify-content: center;
 	width: 100%;
 	margin-top: 30px;
+	@media (max-width: 768px) {
+		margin-top: 0px;
+	}
+`;
+
+export const StyledSelect = styled.select`
+	@media (max-width: 768px) {
+		width: 80%;
+	}
 `;
 
 export const DivSelectStyled = styled.div`
@@ -35,5 +44,9 @@ export const ButtonStyled = styled.button`
 	&:hover {
 		background: #111;
 		color: #ddd;
+	}
+	@media (max-width: 768px) {
+		margin-top: 20px;
+		margin-right: 0px;
 	}
 `;

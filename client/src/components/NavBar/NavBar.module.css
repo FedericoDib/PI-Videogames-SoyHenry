@@ -1,13 +1,23 @@
 .navbar {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
-    padding: 20px 0 20px 0px;
-    width: 85vw;
+    padding: 20px 0 20px 20px;
+    width: 90%;
     /* background: rgb(2,0,36);
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,56,121,1) 95%, rgba(0,78,255,1) 100%); */
     color: #000;
     text-decoration: none;
+}
+
+.container {
+    display: flex;
+}
+
+.containerTwo {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
 }
 
 .navlink{
@@ -23,6 +33,8 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     margin-right: 15px;
+    line-height: 1.2rem;
+
 }
 
 .navlink:hover {
@@ -32,9 +44,38 @@
 }
 
 .title{
-    margin-left: 175px;
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: #FAFAFA;
     text-transform: uppercase;
+    line-height: 1.8rem;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar{
+        display: inline-block;
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 20px 0 0px 20px;
+    }
+
+    .navlink {
+        margin-right: 0;
+        padding: 20px 44px;
+    }
+
+    .container {
+        display: block;
+        width: 100%;
+    }
+    .containerTwo {
+        width: 100%;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .title {
+        font-size: 2rem;
+        line-height: 2.2rem;
+    }
 }

@@ -29,6 +29,30 @@ export const DivFormStyled = styled.div`
 	);
 	padding: 40px;
 	box-shadow: 7px 7px #111;
+
+	@media (max-width: 768px) {
+		width: 100%;
+		margin: 0 20px;
+		padding: 10px 10px 30px 10px;
+	}
+`;
+
+export const DivTitle = styled.div`
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	width: 100%;
+
+	@media (max-width: 768px) {
+		flex-direction: column-reverse;
+		button {
+			margin: 30px 0 0 30px;
+		}
+		h1 {
+			margin: 20px 0 0 0;
+			color: #fff;
+		}
+	}
 `;
 
 export const DivStyled = styled.div`
@@ -37,6 +61,11 @@ export const DivStyled = styled.div`
 	align-items: center;
 	width: 100%;
 	margin-top: 20px;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
 `;
 
 export const DivInputsStyled = styled.div`
@@ -91,6 +120,23 @@ export const DivInputsStyled = styled.div`
 			box-shadow: 3px 3px hsl(10, 95%, 21%);
 		}
 	}
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		padding: 0 10px;
+		input,
+		textarea {
+			width: auto;
+			margin-bottom: 0;
+		}
+		select {
+			width: 100%;
+			margin: 0;
+		}
+		label {
+			margin-left: 0;
+		}
+	}
 `;
 export const ButtonStyled = styled.button`
 	font-family: 'Press Start 2P', cursive;
@@ -110,6 +156,10 @@ export const ButtonStyled = styled.button`
 		color: rgba(9, 56, 121, 1);
 		transform: translateY(-4px);
 	}
+	@media (max-width: 768px) {
+		margin-right: 0;
+		margin-top: 20px;
+	}
 `;
 
 export const DivSelectButton = styled.div`
@@ -123,6 +173,9 @@ export const DivSelectButton = styled.div`
 		padding: 5px;
 		margin: 5px 0px;
 	}
+	@media (max-width: 768px) {
+		margin-top: 15px;
+	}
 `;
 
 export const DivGPStyled = styled.div`
@@ -132,6 +185,12 @@ export const DivGPStyled = styled.div`
 	align-items: center;
 	span {
 		text-align: center;
+	}
+
+	@media (max-width: 768px) {
+		width: 100%;
+		align-items: flex-start;
+		margin-top: 20px;
 	}
 `;
 

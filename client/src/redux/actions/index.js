@@ -12,6 +12,7 @@ export const FILTER_BY_RATING = 'FILTER_BY_RATING';
 export const FILTER_BY_CREATION = 'FILTER_BY_CREATION';
 export const CLEAR_DETAILS = 'CLEAR_DETAILS';
 export const DELETE_VIDEOGAME = 'DELETE_VIDEOGAME';
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 
 // action creator
 export const getAllVideogames = () => {
@@ -126,5 +127,12 @@ export const deleteVideogame = async (id) => {
 	return {
 		type: DELETE_VIDEOGAME,
 		payload: videogame.data,
+	};
+};
+
+export const setPage = (payload) => {
+	return {
+		type: SET_CURRENT_PAGE,
+		payload,
 	};
 };
