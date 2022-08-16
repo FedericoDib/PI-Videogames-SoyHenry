@@ -32,7 +32,6 @@ class DetailVideogame extends React.Component {
                     <div className={s.div_bottom_desc}>
                         <h2>Release date: {this.props.detail.released}</h2>
                         <h2>Rating: {this.props.detail.rating}</h2>
-                        {console.log(this.props.detail)}
                         <h2>Genres: { this.props.detail.genres instanceof Array ? this.props.detail.genres.map(genre => genre).join(', ') : this.props.detail.genres}</h2>
                     </div>
                         <h2>Platforms: {this.props.detail.platforms}</h2>

@@ -79,7 +79,6 @@ export const getDetailVideogame = (id) => {
 export const createVideogame = (videogame) => {
 	return async function (dispatch) {
 		const newVideogame = await axios.post('/videogames', videogame);
-		console.log(newVideogame);
 		return dispatch({
 			type: CREATE_VIDEOGAME,
 			payload: newVideogame.data,

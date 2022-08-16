@@ -48,18 +48,14 @@ export class CreateVideogame extends Component {
         [event.target.name]: event.target.value
       }
     })
-    console.log(this.state.errors)
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('hola')
 
     if (Object.values(this.state.errors).every(el => el === '') && Object.values(this.state.newVideogame).every(el => el !== '' && el !== 0 && el.length !== 0)) {
       this.props.getAllVideogames().then(() => {
-        console.log(this.props.videogames)
         const videogame = this.props.videogames.find(videogame => videogame.name === this.state.newVideogame.name)
-        console.log(videogame)
         if (videogame) {
           alert('Videogame already exists')
           this.props.history.push('/videogame/' + videogame.id)
@@ -138,12 +134,9 @@ export class CreateVideogame extends Component {
     }
 
     if (e.target.name === 'rating' && (e.target.value < 0 || e.target.value > 5 || isNaN(e.target.value))) {
-      console.log("🚀 ~ file: CreateVideogame.jsx ~ line 137 ~ CreateVideogame ~ handleErrors ~ isNaN(e.target.value)", isNaN(e.target.value))
       errors[e.target.name] = 'Rating must be between 0 and 5'
       document.getElementById(`${e.target.id}`).classList.add('error')
     }
-
-    console.log(errors)
 
     this.setState({
         errors: errors
