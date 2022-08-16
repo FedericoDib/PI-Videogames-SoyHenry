@@ -21,7 +21,7 @@ const server = require('./src/app.js');
 const axios = require('axios');
 const { conn, Genre, Platform, Videogame } = require('./src/db.js');
 // const Genre = require('./src/models/Genre.js');
-const syncOptions = { force: true };
+const syncOptions = { force: false, alter: true };
 const API_KEY = '7bbd84e90b1c4ab58017e7caca40839d';
 const getInfoAPI = require('./src/routes/index.js');
 

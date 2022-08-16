@@ -46,10 +46,10 @@ export default function Paginate({videogamesPerPage, videogames, paginate}) {
     return(
         <PaginateNav>
             <PaginateUl>
-                <PaginatePlus id="prev" onClick={handlePrevNext}>-</PaginatePlus>
+                { pageNumbers.length > 1 ? <PaginatePlus id="prev" onClick={handlePrevNext}>-</PaginatePlus> : null}
                     <PaginateDiv>
-                        <StyledP>...</StyledP>
-                        {aux.length ? (aux.map(num => 
+                        { pageNumbers.length > 3  ? <StyledP>...</StyledP> : null}
+                        { aux.length ? (aux.map(num => 
                         <li key={num}>
                             <PaginateButton className={num === 1 ? "active" : null} id={num} onClick={() => paginate(num)}>{num}</PaginateButton>
                         </li>)) : 
@@ -59,9 +59,9 @@ export default function Paginate({videogamesPerPage, videogames, paginate}) {
                             <h1>No videogames found</h1>
                         </div>
                         }
-                        <StyledP>...</StyledP>
+                        { pageNumbers.length > 3 ? <StyledP>...</StyledP> : null}
                     </PaginateDiv>
-                <PaginatePlus id="next" onClick={handlePrevNext}>+</PaginatePlus>
+                { pageNumbers.length > 1 ? <PaginatePlus id="next" onClick={handlePrevNext}>+</PaginatePlus> : null}
             </PaginateUl>
         </PaginateNav>
     )
