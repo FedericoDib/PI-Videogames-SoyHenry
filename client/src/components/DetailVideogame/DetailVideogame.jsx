@@ -18,7 +18,7 @@ class DetailVideogame extends React.Component {
                 <div className={s.div_title}>
                     <h1 className={s.title}>{this.props.detail.name}</h1>
                     {
-                        this.props.match.params.id.includes('database') ? (<button onClick={() => deleteVideogame(this.props.match.params.id)}>Delete</button>) : null
+                        this.props.match.params.id.includes('database') ? (<Link to='/videogames'><button className={s.button_back} onClick={() => deleteVideogame(this.props.match.params.id)}>Delete</button></Link>) : null
                     }
                     
                     <Link to='/videogames'><button className={s.button_back} onClick={this.handleDetail}>Back</button></Link>
