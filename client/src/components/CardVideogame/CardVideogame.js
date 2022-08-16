@@ -26,17 +26,27 @@ export const DivStyled = styled.div`
 	box-shadow: #111 6px 6px;
 	border: 2px solid #111;
 	overflow: hidden;
+	transition: all 0.5s ease-in-out;
 	&:hover ${ImgStyled} {
 		transform: scale(1.05);
 		background-color: rgba(0, 0, 0, 0.4);
+		transition: all 0.5s ease-in-out;
 	}
 	&:hover h4 {
 		transform: scale(0.95);
 		transition: all 0.5s ease-in-out;
 	}
 
+	&:not(:hover) h4 {
+		transition: all 0.5s ease-in-out;
+	}
+
 	&:hover h5 {
 		transform: scale(0.95);
+		transition: all 0.5s ease-in-out;
+	}
+
+	&:not(:hover) h5 {
 		transition: all 0.5s ease-in-out;
 	}
 `;
